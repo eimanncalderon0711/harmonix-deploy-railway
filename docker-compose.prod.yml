@@ -1,0 +1,7 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.prod  # Use the dev Dockerfile for development
+    ports:
+      - "8000:8000"
