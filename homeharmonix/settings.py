@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-bo$lg$$via(bkm1rb$tce-fkzreo8nkq*0gep%m0k+wdz9od4e
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['web-production-2cfe.up.railway.app']
 
 
 
@@ -112,12 +112,13 @@ CORS_ALLOWED_ORIGINS = [
     "http://192.168.1.19:8000",  # Allow your local network requests
     "http://192.168.1.19:8080",   
     "https://14da-2001-4455-5bc-4a00-b44c-70e2-fc77-424f.ngrok-free.app",
-    'https://98f8-2001-4455-581-2100-ed26-20c2-7650-beb5.ngrok-free.app'
+    'https://web-production-2cfe.up.railway.app'
 ]
 
 CSRF_TRUSTED_ORIGINS = [
     'https://api.ranaria.store',
-    'https://98f8-2001-4455-581-2100-ed26-20c2-7650-beb5.ngrok-free.app'
+    'https://98f8-2001-4455-581-2100-ed26-20c2-7650-beb5.ngrok-free.app',
+    'https://web-production-2cfe.up.railway.app'
 ]
 
 # settings.py
