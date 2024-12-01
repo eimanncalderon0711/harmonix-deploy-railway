@@ -41,8 +41,6 @@ INSTALLED_APPS = [
     'harmonix_api',
     'rest_framework',
     'corsheaders',
-    'cloudinary_storage',
-    'cloudinary'
 ]
 
 MIDDLEWARE = [
@@ -166,11 +164,3 @@ STATICSTORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
-CLOUDINARY_STORAGE={
-    'CLOUD_NAME':'dxmusfei9',
-    'API_KEY': '566692425556494',
-    'API_SECRET': 'u-3Jrsb8_2YmxbtUxv_XEqSQhss'
-}
-
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinary'
