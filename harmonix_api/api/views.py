@@ -145,7 +145,7 @@ class GetRequestView(generics.ListCreateAPIView):
     def get_queryset(self):
         user_id = self.kwargs['pk']
         task = Task.objects.get(user=user_id)
-        return Request.objects.filter(task=task, many=True)
+        return Request.objects.filter(task=task)
 
 class PatchRequestStatusView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Request.objects.all()
