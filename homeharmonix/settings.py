@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+import cloudinary_storage
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -41,6 +42,8 @@ INSTALLED_APPS = [
     'harmonix_api',
     'rest_framework',
     'corsheaders',
+    'cloudinary_storage',
+    'cloudinary'
 ]
 
 MIDDLEWARE = [
@@ -163,3 +166,12 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 STATICSTORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+CLOUDINARY_STORAGE={
+    'CLOUD_NAME':'dxmusfei9',
+    'API_KEY': '566692425556494',
+    'API_SECRET': 'u-3Jrsb8_2YmxbtUxv_XEqSQhss'
+}
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
