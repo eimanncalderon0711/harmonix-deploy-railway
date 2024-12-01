@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-bo$lg$$via(bkm1rb$tce-fkzreo8nkq*0gep%m0k+wdz9od4e'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['web-production-2cfe.up.railway.app']
 
@@ -172,7 +172,7 @@ CLOUDINARY_STORAGE = {
     'API_SECRET': 'u-3Jrsb8_2YmxbtUxv_XEqSQhss'
 }
 
-MEDIA_URL = 'https://res.cloudinary.com/'.format(CLOUDINARY_STORAGE['dxmusfei9'])
+MEDIA_URL = f'https://res.cloudinary.com/'.format(CLOUDINARY_STORAGE['dxmusfei9'])
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
