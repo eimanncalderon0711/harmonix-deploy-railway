@@ -171,7 +171,8 @@ CLOUDINARY_STORAGE = {
     'API_KEY': '566692425556494',
     'API_SECRET': 'u-3Jrsb8_2YmxbtUxv_XEqSQhss'
 }
-MEDIA_URL = 'https://res.cloudinary.com/{}/'.format(CLOUDINARY_STORAGE['CLOUD_NAME'])
+
+MEDIA_URL = 'https://res.cloudinary.com/dxmusfei9/'.format(CLOUDINARY_STORAGE['CLOUD_NAME'])
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
