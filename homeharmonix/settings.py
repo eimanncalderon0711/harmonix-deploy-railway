@@ -169,9 +169,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CLOUDINARY_STORAGE = {
     'CLOUD_NAME':'dxmusfei9',
     'API_KEY': '566692425556494',
-    'API_SECRET': 'u-3Jrsb8_2YmxbtUxv_XEqSQhss',
+    'API_SECRET': 'u-3Jrsb8_2YmxbtUxv_XEqSQhss'
 }
-MEDIA_URL = '/media/'
+MEDIA_URL = 'https://res.cloudinary.com/{}/'.format(CLOUDINARY_STORAGE['CLOUD_NAME'])
 
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage',
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
