@@ -152,18 +152,16 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 # STATICSTORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 CLOUDINARY_STORAGE = {
@@ -172,7 +170,8 @@ CLOUDINARY_STORAGE = {
     'API_SECRET': 'u-3Jrsb8_2YmxbtUxv_XEqSQhss'
 }
 
-MEDIA_URL = f'https://res.cloudinary.com/'.format(CLOUDINARY_STORAGE['CLOUD_NAME'])
+MEDIA_URL = f'https://res.cloudinary.com/{CLOUDINARY_STORAGE["CLOUD_NAME"]}/'
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
