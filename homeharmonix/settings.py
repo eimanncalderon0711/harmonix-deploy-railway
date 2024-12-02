@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 import os
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api	
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,7 +29,7 @@ SECRET_KEY = 'django-insecure-bo$lg$$via(bkm1rb$tce-fkzreo8nkq*0gep%m0k+wdz9od4e
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['web-production-2cfe.up.railway.app']
+ALLOWED_HOSTS = ['web-production-2cfe.up.railway.app', '127.0.0.1']
 
 
 # Application definition
@@ -113,13 +116,15 @@ CORS_ALLOWED_ORIGINS = [
     "http://192.168.1.19:8000",  # Allow your local network requests
     "http://192.168.1.19:8080",   
     "https://14da-2001-4455-5bc-4a00-b44c-70e2-fc77-424f.ngrok-free.app",
-    'https://web-production-2cfe.up.railway.app'
+    'https://web-production-2cfe.up.railway.app',
+    'https://res.cloudinary.com'
 ]
 
 CSRF_TRUSTED_ORIGINS = [
     'https://api.ranaria.store',
     'https://98f8-2001-4455-581-2100-ed26-20c2-7650-beb5.ngrok-free.app',
-    'https://web-production-2cfe.up.railway.app'
+    'https://web-production-2cfe.up.railway.app',
+    'https://res.cloudinary.com'
 ]
 
 # settings.py
@@ -156,11 +161,11 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
 
-# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
-# STATICSTORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICSTORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
 
@@ -170,7 +175,14 @@ CLOUDINARY_STORAGE = {
     'API_SECRET': 'u-3Jrsb8_2YmxbtUxv_XEqSQhss'
 }
 
-MEDIA_URL = f'https://res.cloudinary.com/{CLOUDINARY_STORAGE["CLOUD_NAME"]}/'
+
+# cloudinary.config(
+#     cloudn_name = "dxmusfei9",
+#     api_key ="566692425556494",
+#     api_secret="u-3Jrsb8_2YmxbtUxv_XEqSQhss",
+# )
+
+# MEDIA_URL = f'https://res.cloudinary.com/{CLOUDINARY_STORAGE["CLOUD_NAME"]}/'
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
