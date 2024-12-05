@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-bo$lg$$via(bkm1rb$tce-fkzreo8nkq*0gep%m0k+wdz9od4e
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['web-production-2cfe.up.railway.app', '127.0.0.1']
+ALLOWED_HOSTS = ['web-production-2cfe.up.railway.app', '127.0.0.1', '192.168.1.7']
 
 
 # Application definition
@@ -154,18 +154,27 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = '/static/'
-STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static')
-]
+# STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
+
+STORAGES = {
+    "default": {
+        "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",    
+    },
+}
+
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, 'static')
+# ]
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
-STATICSTORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# STATICSTORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
 
@@ -175,6 +184,9 @@ CLOUDINARY_STORAGE = {
     'API_SECRET': 'u-3Jrsb8_2YmxbtUxv_XEqSQhss'
 }
 
+MEDIA_URL = '/media/'
+STATIC_URL = '/static/'
+
 
 # cloudinary.config(
 #     cloudn_name = "dxmusfei9",
@@ -183,7 +195,5 @@ CLOUDINARY_STORAGE = {
 # )
 
 # MEDIA_URL = f'https://res.cloudinary.com/{CLOUDINARY_STORAGE["CLOUD_NAME"]}/'
-
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
