@@ -8,7 +8,6 @@ from rest_framework.response import Response
 from rest_framework import generics
 from harmonix_api.utils import send_verification_email
 from django.core.exceptions import ValidationError
-from rest_framework.permissions import AllowAny
 import random
 
 ##Table for registration and storing of user data
@@ -364,6 +363,10 @@ class VerifyCode(APIView):
         # Your logic for verifying code
         email = request.data.get('email')
         code = request.data.get('code')
+        user = User.objects.filter(email=email).first()
+
+        if user:
+            return Response({"error": "User with this email already exist."}, status=status.HTTP_404_NOT_FOUND)
         
     # Validate inputs
         if not email or not code:
