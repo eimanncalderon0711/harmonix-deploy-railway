@@ -276,4 +276,20 @@ class GetAllRatingSerializer(serializers.ModelSerializer):
         model = Rating
         fields = "__all__"
         
+class VerififiedAccountSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = AccountVerification
+        fields = "__all__"
+
+class ReferenceCharSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CharacterReference
+        fields = "__all__"
+
+class CertificateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Certificate
+        fields = "__all__"
+
+        
         

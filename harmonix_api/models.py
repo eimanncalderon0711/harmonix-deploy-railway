@@ -19,9 +19,35 @@ class User(models.Model):
     address = models.ForeignKey(Address, on_delete=models.CASCADE, null=True, blank=True)
     phone = models.CharField(max_length=15, null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
-   
     def __str__(self):
         return self.fullname
+    
+class CharacterReference(models.Model):
+    phone = models.CharField(max_length=15, null=True, blank=True)
+    
+    def __str__(self):
+        return f'Phone: {self.phone}'
+
+class Certificate(models.Model):
+    certificate = models.ImageField(upload_to='certificate_pics/')
+    
+    def __str__(self):
+        return f'Certificate #{self.id}'
+    
+class AccountVerification(models.Model):
+    STATUS_CHOICES = [
+        ('pending', 'Pending'),
+        ('decline', 'Declined'),
+        ('accepted', 'Accepted'),   
+    ]
+    character_references = models.ManyToManyField(CharacterReference, related_name='AccountVerifications', blank=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    certificate = models.ManyToManyField(Certificate, related_name='AccountVerifications', blank=True)
+    valid_id = models.ImageField(upload_to='credential_pics/', blank=True, null=True)
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='pending', db_index=True)
+    
+    def __str__(self):
+        return f'{self.user.fullname} - {self.status}'
     
 class Location(models.Model):
     location_name = models.CharField(max_length=255)

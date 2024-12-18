@@ -45,6 +45,11 @@ urlpatterns = [
     path('register-verification/', RegisterVerificationCodeView.as_view(), name='registration code'),
     path('verify-code/', VerifyCode.as_view(), name='verify-code'),
     path('reset-password/', ResetPassword.as_view(), name='reset-password'),
+    path('verified-account/', VerifiedAccountViews.as_view(), name='status-verification'),
+    path('reference-user/', ReferenceView.as_view(), name='reference-user'),
+    path('certificates/', CertificateView.as_view(), name='certificates'),
+    path('getverified-account/', GetVerifiedAccountViews.as_view(), name='get-verified-account'),
+    path('deleteverified-account/<int:pk>/', DeleteVerification.as_view(), name='get-verified-account'),
     
     # path('requests/', RequestView.as_view(), name='RequestView'),
     # path('notifications/<int:pk>/', BookingNotification.as_view(), name='Request-Notification'),

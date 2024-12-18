@@ -388,12 +388,47 @@ class VerifyCode(APIView):
             return Response({"error": "Code not found for this email"}, status=status.HTTP_404_NOT_FOUND)
         
         
-
-
-
-
+class VerifiedAccountViews(APIView):
     
+    def post(self, request):
+        user_id = request.data.get('user')
+        verified_account = AccountVerification.objects.filter(user=user_id).first()
 
+        if not verified_account:
+            return Response({"error": "This user has no verification request."}, status=status.HTTP_404_NOT_FOUND)
 
+        serializer = VerififiedAccountSerializer(verified_account)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
+class GetVerifiedAccountViews(generics.CreateAPIView):
+    queryset = AccountVerification.objects.all()
+    serializer_class = VerififiedAccountSerializer
+    # def create(self, request, *args, **kwargs):
+    #     # Extract certificates and valid_id from the request
+    #     certificates_data = request.FILES.getlist('certificate[]')  # Multiple images
+    #     valid_id = request.FILES.get('valid_id')  # Single image for valid ID
 
+    #     # Step 1: Create AccountVerification instance
+    #     serializer = self.get_serializer(data=request.data)
+    #     serializer.is_valid(raise_exception=True)
+    #     account_verification = serializer.save(valid_id=valid_id)
+
+    #     # Step 2: Save and link Certificate images
+    #     for certificate_image in certificates_data:
+    #         certificate_instance = Certificate.objects.create(certificate=certificate_image)
+    #         account_verification.certificate.add(certificate_instance)
+
+    #     # Step 3: Return serialized data
+    #     return Response(self.get_serializer(account_verification).data, status=status.HTTP_201_CREATED)
+
+class DeleteVerification(generics.RetrieveUpdateDestroyAPIView):
+    queryset = AccountVerification.objects.all()
+    serializer_class = VerififiedAccountSerializer
+
+class ReferenceView(generics.CreateAPIView):
+    queryset = CharacterReference.objects.all()
+    serializer_class = ReferenceCharSerializer
+
+class CertificateView(generics.CreateAPIView):
+    queryset = Certificate.objects.all()
+    serializer_class = CertificateSerializer
