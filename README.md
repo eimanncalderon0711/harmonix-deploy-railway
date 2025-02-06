@@ -9,7 +9,7 @@ Before you begin, ensure you have the following installed:
 1. Open your cmd and navigate to your desktop directory
 2. **Clone the repository**:
    ```bash
-   git clone https://github.com/yourusername/your-repo-name.git
+   git clone https://github.com/eimanncalderon0711/harmonix-deploy-railway.git
    cd harmonix-deploy-railway 
 3.   **Create a virtual environment**:
      ```bash
